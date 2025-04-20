@@ -1,5 +1,6 @@
 package dev.lucaslowhan.gerenciamento.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Pessoa {
@@ -46,5 +47,17 @@ public abstract class Pessoa {
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(cpf, pessoa.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cpf);
     }
 }

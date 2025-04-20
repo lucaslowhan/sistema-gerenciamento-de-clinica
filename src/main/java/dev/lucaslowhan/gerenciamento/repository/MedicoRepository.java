@@ -35,6 +35,15 @@ public class MedicoRepository {
         return null;
     }
 
+    public Medico buscarPorCrm(String crm){
+        for(Medico medico:medicos){
+            if(medico.getCrm().equals(crm)){
+                return medico;
+            }
+        }
+        return null;
+    }
+
     public void remover(Medico medico){
         if(medicos.contains(medico)){
             medicos.remove(medico);

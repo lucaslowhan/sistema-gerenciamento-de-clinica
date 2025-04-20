@@ -32,6 +32,9 @@ public class MedicoService {
     public Medico buscarPorCPF(String cpf){
         return medicoRepository.buscarPorCpf(cpf);
     }
+    public Medico buscarPorCrm(String crm){
+        return medicoRepository.buscarPorCrm(crm);
+    }
 
     public void remover(Medico medico){
         medicoRepository.remover(medico);
