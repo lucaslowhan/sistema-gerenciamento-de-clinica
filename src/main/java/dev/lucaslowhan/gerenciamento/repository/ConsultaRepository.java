@@ -22,22 +22,24 @@ public class ConsultaRepository {
         return consultas;
     }
 
-    public Consulta buscarPorPaciente(Paciente paciente){
+    public List<Consulta> buscarPorPaciente(Paciente paciente){
+        List<Consulta> consultasPacientes = new ArrayList<>();
         for(Consulta consulta:consultas){
             if(consulta.getPaciente().equals(paciente)){
-                return consulta;
+                consultasPacientes.add(consulta);
             }
         }
-        return null;
+        return consultasPacientes;
     }
 
-    public Consulta buscarPorMedico(Medico medico){
+    public List<Consulta> buscarPorMedico(Medico medico){
+        List<Consulta> consultasMedicos = new ArrayList<>();
         for(Consulta consulta:consultas){
             if(consulta.getMedico().equals(medico)){
-                return consulta;
+                consultasMedicos.add(consulta);
             }
         }
-        return null;
+        return consultasMedicos;
     }
 
     public void removerConsulta(Consulta consulta){

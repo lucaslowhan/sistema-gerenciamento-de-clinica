@@ -8,6 +8,7 @@ import dev.lucaslowhan.gerenciamento.repository.MedicoRepository;
 import dev.lucaslowhan.gerenciamento.repository.PacienteRepository;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 public class ConsultaService {
@@ -39,11 +40,30 @@ public class ConsultaService {
     }
 
     public List<Consulta> listarConsultasPorPaciente(String cpfPaciente){
-        return (List<Consulta>) consultaRepository.buscarPorPaciente(pacienteRepository.buscarPorCpf(cpfPaciente));
+        if(cpfPaciente == null || cpfPaciente.isEmpty()){
+            System.out.println("CPF INVALIDO");
+            return Collections.emptyList();
+        }
+        Paciente paciente = pacienteRepository.buscarPorCpf(cpfPaciente);
+        if(paciente==null){
+            System.out.println("Paciente não encontrado");
+            return Collections.emptyList();
+        }
+
+        return consultaRepository.buscarPorPaciente(paciente);
     }
 
     public List<Consulta> listarConsultasPorMedico (String crmMedico){
-        return (List<Consulta>) consultaRepository.buscarPorMedico(medicoRepository.buscarPorCrm(crmMedico));
+        if(crmMedico == null|| crmMedico.isEmpty()){
+            System.out.println("CPF INVALIDO");
+            return Collections.emptyList();
+        }
+        Medico medico = medicoRepository.buscarPorCrm(crmMedico);
+        if(medico==null){
+            System.out.println("Médico não encontrado");
+            return Collections.emptyList();
+        }
+        return consultaRepository.buscarPorMedico(medico);
     }
 
     public List<Consulta> listarTodasConsultas() {
