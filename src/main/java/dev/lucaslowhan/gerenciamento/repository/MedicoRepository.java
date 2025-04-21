@@ -3,11 +3,16 @@ package dev.lucaslowhan.gerenciamento.repository;
 import dev.lucaslowhan.gerenciamento.model.Medico;
 import dev.lucaslowhan.gerenciamento.model.Paciente;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class MedicoRepository {
     private List<Medico> medicos;
+
+    public MedicoRepository(){
+        this.medicos = new ArrayList<>();
+    }
 
     public void salvar(Medico medico){
         medicos.add(medico);
@@ -26,9 +31,11 @@ public class MedicoRepository {
         return null;
     }
 
-    public Medico buscarPorCpf(String cpf){
-        for(Medico medico:medicos){
-            if(medico.getCpf().equals(cpf)){
+    public Medico buscarPorCpf(String cpf) {
+        if (cpf == null || cpf.isEmpty()) return null;
+
+        for (Medico medico : medicos) {
+            if (cpf.equals(medico.getCpf())) {
                 return medico;
             }
         }

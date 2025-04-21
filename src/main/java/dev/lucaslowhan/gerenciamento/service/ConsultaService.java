@@ -14,7 +14,7 @@ public class ConsultaService {
     private ConsultaRepository consultaRepository;
     private PacienteRepository pacienteRepository;
     private MedicoRepository medicoRepository;
-    {
+    public ConsultaService(ConsultaRepository consultaRepository, MedicoRepository medicoRepository, PacienteRepository pacienteRepository) {
         this.consultaRepository = consultaRepository;
         this.medicoRepository = medicoRepository;
         this.pacienteRepository = pacienteRepository;

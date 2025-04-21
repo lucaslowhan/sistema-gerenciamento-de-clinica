@@ -14,11 +14,18 @@ public class MedicoService {
     }
 
     public void cadastrarMedico(Medico medico){
-        if(medicoRepository.buscarPorCpf(medico.getCpf())!=null){
-            System.out.println("Já existe um médico com esse CPF");
+        if (medico == null || medico.getCpf() == null || medico.getCpf().isEmpty()) {
+            System.out.println("Dados do médico inválidos.");
             return;
         }
+
+        if (medicoRepository.buscarPorCpf(medico.getCpf()) != null) {
+            System.out.println("Já existe um médico cadastrado com esse CPF.");
+            return;
+        }
+
         medicoRepository.salvar(medico);
+        System.out.println("Médico cadastrado com sucesso!");
     }
 
     public List<Medico> listarMedicos(){

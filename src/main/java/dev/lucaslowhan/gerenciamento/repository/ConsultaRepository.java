@@ -4,10 +4,15 @@ import dev.lucaslowhan.gerenciamento.model.Consulta;
 import dev.lucaslowhan.gerenciamento.model.Medico;
 import dev.lucaslowhan.gerenciamento.model.Paciente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultaRepository {
     private List<Consulta> consultas;
+
+    public ConsultaRepository(){
+        consultas = new ArrayList<>();
+    }
 
     public void salvar(Consulta consulta){
         consultas.add(consulta);
